@@ -25,6 +25,22 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class FravarstypeResource extends Fravarstype implements FintLinks {
+    public static FravarstypeResource create(Fravarstype other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof FravarstypeResource) {
+            return (FravarstypeResource)other;
+        }
+        FravarstypeResource result = new FravarstypeResource();
+        result.setOverfores(other.getOverfores());
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

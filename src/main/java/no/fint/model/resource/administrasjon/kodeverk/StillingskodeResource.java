@@ -25,6 +25,21 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class StillingskodeResource extends Stillingskode implements FintLinks {
+    public static StillingskodeResource create(Stillingskode other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof StillingskodeResource) {
+            return (StillingskodeResource)other;
+        }
+        StillingskodeResource result = new StillingskodeResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

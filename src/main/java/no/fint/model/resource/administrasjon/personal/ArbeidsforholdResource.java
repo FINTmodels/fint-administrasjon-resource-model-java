@@ -26,6 +26,25 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class ArbeidsforholdResource extends Arbeidsforhold implements FintLinks {
+    public static ArbeidsforholdResource create(Arbeidsforhold other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof ArbeidsforholdResource) {
+            return (ArbeidsforholdResource)other;
+        }
+        ArbeidsforholdResource result = new ArbeidsforholdResource();
+        result.setAnsettelsesprosent(other.getAnsettelsesprosent());
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setHovedstilling(other.getHovedstilling());
+        result.setLonnsprosent(other.getLonnsprosent());
+        result.setStillingsnummer(other.getStillingsnummer());
+        result.setStillingstittel(other.getStillingstittel());
+        result.setSystemId(other.getSystemId());
+        result.setTilstedeprosent(other.getTilstedeprosent());
+        result.setArslonn(other.getArslonn());
+        return result;
+    }
 
     // Links
     @Getter

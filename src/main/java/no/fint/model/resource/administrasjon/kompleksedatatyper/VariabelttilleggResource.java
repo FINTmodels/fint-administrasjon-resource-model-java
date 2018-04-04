@@ -27,23 +27,36 @@ import no.fint.model.resource.administrasjon.kompleksedatatyper.KontostrengResou
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class VariabelttilleggResource extends Variabelttillegg implements FintLinks {
+    public static VariabelttilleggResource create(Variabelttillegg other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof VariabelttilleggResource) {
+            return (VariabelttilleggResource)other;
+        }
+        VariabelttilleggResource result = new VariabelttilleggResource();
+        result.setAntall(other.getAntall());
+        result.setBelop(other.getBelop());
+        result.setBeskrivelse(other.getBeskrivelse());
+        result.setKontostreng(other.getKontostreng());
+        result.setPeriode(other.getPeriode());
+        return result;
+    }
     // Resources
-    @Getter
-    private KontostrengResource kontostreng;
-
     @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = new ArrayList<>();
-        result.add(kontostreng);
+        if (getKontostreng() != null) {
+            result.add(KontostrengResource.create(getKontostreng()));
+        }
         return result;
     }
     
-
     @JsonSetter
     @Override
-    public void setKontostreng(Kontostreng _kontostreng) {
-        this.kontostreng = KontostrengResource.class.cast(_kontostreng);
+    public void setKontostreng(Kontostreng kontostreng) {
+        super.setKontostreng(KontostrengResource.create(kontostreng));
     }
 
     // Links

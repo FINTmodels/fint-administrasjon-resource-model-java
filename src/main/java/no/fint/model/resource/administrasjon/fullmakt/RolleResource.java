@@ -25,6 +25,18 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class RolleResource extends Rolle implements FintLinks {
+    public static RolleResource create(Rolle other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof RolleResource) {
+            return (RolleResource)other;
+        }
+        RolleResource result = new RolleResource();
+        result.setBeskrivelse(other.getBeskrivelse());
+        result.setNavn(other.getNavn());
+        return result;
+    }
 
     // Links
     @Getter

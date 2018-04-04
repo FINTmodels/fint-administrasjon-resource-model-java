@@ -27,22 +27,37 @@ import no.fint.model.resource.administrasjon.kompleksedatatyper.Variabelttillegg
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class VariabellonnResource extends Variabellonn implements FintLinks {
+    public static VariabellonnResource create(Variabellonn other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof VariabellonnResource) {
+            return (VariabellonnResource)other;
+        }
+        VariabellonnResource result = new VariabellonnResource();
+        result.setVariabelttillegg(other.getVariabelttillegg());
+        result.setAnvist(other.getAnvist());
+        result.setAttestert(other.getAttestert());
+        result.setKontert(other.getKontert());
+        result.setPeriode(other.getPeriode());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
     // Resources
-    private List<VariabelttilleggResource> variabelttillegg;
-
     @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = new ArrayList<>();
-        result.addAll(variabelttillegg);
+        if (getVariabelttillegg() != null) {
+            result.addAll(getVariabelttillegg().stream().map(VariabelttilleggResource::create).collect(Collectors.toList()));
+        }
         return result;
     }
     
-
     @JsonSetter
     @Override
-    public void setVariabelttillegg(List<Variabelttillegg> _variabelttillegg) {
-        this.variabelttillegg = _variabelttillegg == null ? null : _variabelttillegg.stream().map(VariabelttilleggResource.class::cast).collect(Collectors.toList());
+    public void setVariabelttillegg(List<Variabelttillegg> variabelttillegg) {
+        super.setVariabelttillegg(variabelttillegg.stream().map(VariabelttilleggResource::create).collect(Collectors.toList()));
     }
 
     // Links

@@ -27,6 +27,21 @@ import no.fint.model.felles.kompleksedatatyper.Kontaktinformasjon;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class PersonalressursResource extends Personalressurs implements FintLinks {
+    public static PersonalressursResource create(Personalressurs other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof PersonalressursResource) {
+            return (PersonalressursResource)other;
+        }
+        PersonalressursResource result = new PersonalressursResource();
+        result.setAnsattnummer(other.getAnsattnummer());
+        result.setAnsettelsesperiode(other.getAnsettelsesperiode());
+        result.setBrukernavn(other.getBrukernavn());
+        result.setKontaktinformasjon(other.getKontaktinformasjon());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

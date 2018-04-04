@@ -25,6 +25,21 @@ import no.fint.model.administrasjon.kodeverk.Kontodimensjon;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class FunksjonResource extends Funksjon implements FintLinks {
+    public static FunksjonResource create(Funksjon other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof FunksjonResource) {
+            return (FunksjonResource)other;
+        }
+        FunksjonResource result = new FunksjonResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

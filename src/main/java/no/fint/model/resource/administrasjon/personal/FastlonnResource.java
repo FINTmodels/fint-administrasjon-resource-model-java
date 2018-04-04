@@ -29,30 +29,46 @@ import no.fint.model.resource.administrasjon.kompleksedatatyper.FasttilleggResou
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class FastlonnResource extends Fastlonn implements FintLinks {
+    public static FastlonnResource create(Fastlonn other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof FastlonnResource) {
+            return (FastlonnResource)other;
+        }
+        FastlonnResource result = new FastlonnResource();
+        result.setBeskjeftigelse(other.getBeskjeftigelse());
+        result.setFasttillegg(other.getFasttillegg());
+        result.setAnvist(other.getAnvist());
+        result.setAttestert(other.getAttestert());
+        result.setKontert(other.getKontert());
+        result.setPeriode(other.getPeriode());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
     // Resources
-    private List<BeskjeftigelseResource> beskjeftigelse;
-    private List<FasttilleggResource> fasttillegg;
-
     @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = new ArrayList<>();
-        result.addAll(beskjeftigelse);
-        result.addAll(fasttillegg);
+        if (getBeskjeftigelse() != null) {
+            result.addAll(getBeskjeftigelse().stream().map(BeskjeftigelseResource::create).collect(Collectors.toList()));
+        }
+        if (getFasttillegg() != null) {
+            result.addAll(getFasttillegg().stream().map(FasttilleggResource::create).collect(Collectors.toList()));
+        }
         return result;
     }
     
-
     @JsonSetter
     @Override
-    public void setBeskjeftigelse(List<Beskjeftigelse> _beskjeftigelse) {
-        this.beskjeftigelse = _beskjeftigelse == null ? null : _beskjeftigelse.stream().map(BeskjeftigelseResource::new).collect(Collectors.toList());
+    public void setBeskjeftigelse(List<Beskjeftigelse> beskjeftigelse) {
+        super.setBeskjeftigelse(beskjeftigelse.stream().map(BeskjeftigelseResource::create).collect(Collectors.toList()));
     }
-
     @JsonSetter
     @Override
-    public void setFasttillegg(List<Fasttillegg> _fasttillegg) {
-        this.fasttillegg = _fasttillegg == null ? null : _fasttillegg.stream().map(FasttilleggResource::new).collect(Collectors.toList());
+    public void setFasttillegg(List<Fasttillegg> fasttillegg) {
+        super.setFasttillegg(fasttillegg.stream().map(FasttilleggResource::create).collect(Collectors.toList()));
     }
 
     // Links

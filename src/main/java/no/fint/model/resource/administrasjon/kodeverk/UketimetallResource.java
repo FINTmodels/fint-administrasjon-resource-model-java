@@ -25,6 +25,21 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class UketimetallResource extends Uketimetall implements FintLinks {
+    public static UketimetallResource create(Uketimetall other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof UketimetallResource) {
+            return (UketimetallResource)other;
+        }
+        UketimetallResource result = new UketimetallResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

@@ -27,27 +27,35 @@ import no.fint.model.resource.administrasjon.kompleksedatatyper.KontostrengResou
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class BeskjeftigelseResource extends Beskjeftigelse implements FintLinks {
-    public BeskjeftigelseResource(Beskjeftigelse other) {
-        setKontostreng(other.getKontostreng());
+    public static BeskjeftigelseResource create(Beskjeftigelse other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof BeskjeftigelseResource) {
+            return (BeskjeftigelseResource)other;
+        }
+        BeskjeftigelseResource result = new BeskjeftigelseResource();
+        result.setBeskrivelse(other.getBeskrivelse());
+        result.setKontostreng(other.getKontostreng());
+        result.setPeriode(other.getPeriode());
+        result.setProsent(other.getProsent());
+        return result;
     }
-
     // Resources
-    @Getter
-    private KontostrengResource kontostreng;
-
     @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = new ArrayList<>();
-        result.add(kontostreng);
+        if (getKontostreng() != null) {
+            result.add(KontostrengResource.create(getKontostreng()));
+        }
         return result;
     }
     
-
     @JsonSetter
     @Override
-    public void setKontostreng(Kontostreng _kontostreng) {
-        this.kontostreng = KontostrengResource.class.cast(_kontostreng);
+    public void setKontostreng(Kontostreng kontostreng) {
+        super.setKontostreng(KontostrengResource.create(kontostreng));
     }
 
     // Links

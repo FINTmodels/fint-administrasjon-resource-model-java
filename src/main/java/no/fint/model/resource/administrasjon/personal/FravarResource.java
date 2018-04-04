@@ -26,6 +26,19 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class FravarResource extends Fravar implements FintLinks {
+    public static FravarResource create(Fravar other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof FravarResource) {
+            return (FravarResource)other;
+        }
+        FravarResource result = new FravarResource();
+        result.setPeriode(other.getPeriode());
+        result.setProsent(other.getProsent());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

@@ -25,6 +25,21 @@ import no.fint.model.administrasjon.kodeverk.Kontodimensjon;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class AnsvarResource extends Ansvar implements FintLinks {
+    public static AnsvarResource create(Ansvar other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof AnsvarResource) {
+            return (AnsvarResource)other;
+        }
+        AnsvarResource result = new AnsvarResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

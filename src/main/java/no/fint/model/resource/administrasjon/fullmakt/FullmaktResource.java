@@ -26,6 +26,18 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class FullmaktResource extends Fullmakt implements FintLinks {
+    public static FullmaktResource create(Fullmakt other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof FullmaktResource) {
+            return (FullmaktResource)other;
+        }
+        FullmaktResource result = new FullmaktResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

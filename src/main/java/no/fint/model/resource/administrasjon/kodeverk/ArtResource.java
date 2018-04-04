@@ -25,6 +25,21 @@ import no.fint.model.administrasjon.kodeverk.Kontodimensjon;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class ArtResource extends Art implements FintLinks {
+    public static ArtResource create(Art other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof ArtResource) {
+            return (ArtResource)other;
+        }
+        ArtResource result = new ArtResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

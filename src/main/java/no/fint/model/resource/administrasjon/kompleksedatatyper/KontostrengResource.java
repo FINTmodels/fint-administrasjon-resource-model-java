@@ -24,6 +24,16 @@ import no.fint.model.administrasjon.kompleksedatatyper.Kontostreng;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class KontostrengResource extends Kontostreng implements FintLinks {
+    public static KontostrengResource create(Kontostreng other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof KontostrengResource) {
+            return (KontostrengResource)other;
+        }
+        KontostrengResource result = new KontostrengResource();
+        return result;
+    }
 
     // Links
     @Getter
