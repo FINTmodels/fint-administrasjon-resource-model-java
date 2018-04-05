@@ -1,11 +1,11 @@
 {
-  "anvist": 1522925318837,
-  "attestert": 1522925308837,
+  "anvist": "2018-04-05T14:51:20Z",
+  "attestert": "2018-04-05T14:51:10Z",
   "kontert": null,
   "periode": {
     "beskrivelse": null,
     "slutt": null,
-    "start": 1522925318837
+    "start": "2018-04-05T14:51:20Z"
   },
   "systemId": {
     "gyldighetsperiode": null,
@@ -36,7 +36,7 @@
       "periode": {
         "beskrivelse": null,
         "slutt": null,
-        "start": 1522925318837
+        "start": "2018-04-05T14:51:20Z"
       },
       "prosent": 10000,
       "_links": {
