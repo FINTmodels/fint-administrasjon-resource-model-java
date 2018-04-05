@@ -14,9 +14,9 @@ class ModelDeserializationSpec extends Specification {
         objectMapper = new ObjectMapper()
     }
 
-    def "Read Person from person.json"() {
+    def "Read Fastlonn from fastlonn.json"() {
         given:
-        def input = getClass().getResourceAsStream("/person.json")
+        def input = getClass().getResourceAsStream("/fastlonn.json")
 
         when:
         def result = objectMapper.readValue(input, Fastlonn.class)
@@ -24,11 +24,18 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.anvist
+        result.periode.start
+        result.systemId.identifikatorverdi == "ABC123"
+        result.beskjeftigelse[0].beskrivelse == "Test"
+        result.beskjeftigelse[0].periode.start
+        result.beskjeftigelse[0].prosent == 10000
+        result.beskjeftigelse[0].kontostreng
     }
 
-    def "Read PersonResource from person.json"() {
+    def "Read FastlonnResource from fastlonn.json"() {
         given:
-        def input = getClass().getResourceAsStream("/person.json")
+        def input = getClass().getResourceAsStream("/fastlonn.json")
 
         when:
         def result = objectMapper.readValue(input, FastlonnResource.class)
@@ -36,11 +43,18 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.anvist
+        result.periode.start
+        result.systemId.identifikatorverdi == "ABC123"
+        result.beskjeftigelse[0].beskrivelse == "Test"
+        result.beskjeftigelse[0].periode.start
+        result.beskjeftigelse[0].prosent == 10000
+        result.beskjeftigelse[0].kontostreng
     }
 
-    def "Read Person from personresource.json"() {
+    def "Read Fastlonn from fastlonnresource.json"() {
         given:
-        def input = getClass().getResourceAsStream("/personresource.json")
+        def input = getClass().getResourceAsStream("/fastlonnresource.json")
 
         when:
         def result = objectMapper.readValue(input, Fastlonn.class)
@@ -50,9 +64,9 @@ class ModelDeserializationSpec extends Specification {
         thrown(UnrecognizedPropertyException)
     }
 
-    def "Read Person from personresource.json with ObjectMapper config"() {
+    def "Read Fastlonn from fastlonnresource.json with ObjectMapper config"() {
         given:
-        def input = getClass().getResourceAsStream("/personresource.json")
+        def input = getClass().getResourceAsStream("/fastlonnresource.json")
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         when:
@@ -61,11 +75,18 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.anvist
+        result.periode.start
+        result.systemId.identifikatorverdi == "ABC123"
+        result.beskjeftigelse[0].beskrivelse == "Test"
+        result.beskjeftigelse[0].periode.start
+        result.beskjeftigelse[0].prosent == 10000
+        result.beskjeftigelse[0].kontostreng
     }
 
-    def "Read PersonResource from personresource.json"() {
+    def "Read FastlonnResource from fastlonnresource.json"() {
         given:
-        def input = getClass().getResourceAsStream("/personresource.json")
+        def input = getClass().getResourceAsStream("/fastlonnresource.json")
 
         when:
         def result = objectMapper.readValue(input, FastlonnResource.class)
@@ -73,11 +94,19 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.anvist
+        result.periode.start
+        result.systemId.identifikatorverdi == "ABC123"
+        result.beskjeftigelse[0].beskrivelse == "Test"
+        result.beskjeftigelse[0].periode.start
+        result.beskjeftigelse[0].prosent == 10000
+        result.beskjeftigelse[0].kontostreng
+        result.links.size() == 1
     }
 
-    def "Read Person from personresourcelinks.json"() {
+    def "Read Fastlonn from fastlonnresourcelinks.json"() {
         given:
-        def input = getClass().getResourceAsStream("/personresourcelinks.json")
+        def input = getClass().getResourceAsStream("/fastlonnresourcelinks.json")
 
         when:
         def result = objectMapper.readValue(input, Fastlonn.class)
@@ -87,9 +116,9 @@ class ModelDeserializationSpec extends Specification {
         thrown(UnrecognizedPropertyException)
     }
 
-    def "Read Person from personresourcelinks.json with ObjectMapper config"() {
+    def "Read Fastlonn from fastlonnresourcelinks.json with ObjectMapper config"() {
         given:
-        def input = getClass().getResourceAsStream("/personresourcelinks.json")
+        def input = getClass().getResourceAsStream("/fastlonnresourcelinks.json")
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         when:
@@ -98,11 +127,18 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.anvist
+        result.periode.start
+        result.systemId.identifikatorverdi == "ABC123"
+        result.beskjeftigelse[0].beskrivelse == "Test"
+        result.beskjeftigelse[0].periode.start
+        result.beskjeftigelse[0].prosent == 10000
+        result.beskjeftigelse[0].kontostreng
     }
 
-    def "Read PersonResource from personresourcelinks.json"() {
+    def "Read FastlonnResource from fastlonnresourcelinks.json"() {
         given:
-        def input = getClass().getResourceAsStream("/personresourcelinks.json")
+        def input = getClass().getResourceAsStream("/fastlonnresourcelinks.json")
 
         when:
         def result = objectMapper.readValue(input, FastlonnResource.class)
@@ -110,10 +146,19 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
-        result.bostedsadresse
-        result.postadresse
+        result.anvist
+        result.periode.start
+        result.systemId.identifikatorverdi == "ABC123"
+        result.beskjeftigelse[0].beskrivelse == "Test"
+        result.beskjeftigelse[0].periode.start
+        result.beskjeftigelse[0].prosent == 10000
+        result.beskjeftigelse[0].kontostreng
+        result.links.size() == 1
+        result.beskjeftigelse[0].links.size() == 1
+        result.beskjeftigelse[0].kontostreng.links.size() == 3
     }
 
+    /*
     def "Read PersonResources from personresourceslinks.json"() {
         given:
         def input = getClass().getResourceAsStream("/personresourceslinks.json")
@@ -129,4 +174,5 @@ class ModelDeserializationSpec extends Specification {
         result._embedded._entries[0].bostedsadresse
         result._embedded._entries[0].postadresse
     }
+    */
 }

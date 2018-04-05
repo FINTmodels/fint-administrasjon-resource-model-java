@@ -1,0 +1,27 @@
+{
+  "anvist": 1522925318606,
+  "attestert": 1522925308584,
+  "kontert": null,
+  "periode": {
+    "beskrivelse": null,
+    "slutt": null,
+    "start": 1522925318606
+  },
+  "systemId": {
+    "gyldighetsperiode": null,
+    "identifikatorverdi": "ABC123"
+  },
+  "beskjeftigelse": [
+    {
+      "beskrivelse": "Test",
+      "kontostreng": {},
+      "periode": {
+        "beskrivelse": null,
+        "slutt": null,
+        "start": 1522925318606
+      },
+      "prosent": 10000
+    }
+  ],
+  "fasttillegg": []
+}

@@ -2,6 +2,7 @@ package no.fint.test.model
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
+import no.fint.model.administrasjon.personal.Fastlonn
 import no.fint.model.felles.Person
 import no.fint.test.model.utils.TestApplication
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,19 +19,27 @@ class SpringModelDeserializationSpec extends Specification {
 
     def "Read Resource from personresourcelinks json"() {
         given:
-        def input = getClass().getResourceAsStream("/personresourcelinks.json")
+        def input = getClass().getResourceAsStream("/fastlonnresourcelinks.json")
         
         when:
-        def result = objectMapper.readValue(input, new TypeReference<Resource<Person>>() {})
+        def result = objectMapper.readValue(input, new TypeReference<Resource<Fastlonn>>() {})
+        println(result)
 
         then:
         result
-        result.links.size() == 2
+        result.links.size() == 1
         result.content
-        result.content.bostedsadresse
-        result.content.postadresse
+        result.content.anvist
+        result.content.beskjeftigelse[0].kontostreng
+        result.content.periode.start
+        result.content.systemId.identifikatorverdi == "ABC123"
+        result.content.beskjeftigelse[0].beskrivelse == "Test"
+        result.content.beskjeftigelse[0].periode.start
+        result.content.beskjeftigelse[0].prosent == 10000
+        result.content.beskjeftigelse[0].kontostreng
     }
 
+    /*
     def "Read Resources from personresourceslinks json"() {
         given:
         def input = getClass().getResourceAsStream("/personresourceslinks.json")
@@ -45,4 +54,5 @@ class SpringModelDeserializationSpec extends Specification {
         result.content.bostedsadresse
         result.content.postadresse
     }
+    */
 }

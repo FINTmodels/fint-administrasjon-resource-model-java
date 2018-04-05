@@ -26,7 +26,7 @@ dependencies {
     compile('com.fasterxml.jackson.core:jackson-databind:2.9.4')
     compile("no.fint:fint-administrasjon-model-java:${version}")
     compile("no.fint:fint-felles-resource-model-java:${version}")
-    compile('no.fint:fint-model-resource:0.1.0')
+    compile('no.fint:fint-model-resource:0.2.0')
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
 
     testCompile("org.spockframework:spock-core:${spockSpringVersion}")
