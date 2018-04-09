@@ -95,4 +95,5 @@ class ModelSerializationSpec extends Specification {
         object._links.arbeidsforhold
         object.beskjeftigelse[0].kontostreng._links.art
     }
+
 }

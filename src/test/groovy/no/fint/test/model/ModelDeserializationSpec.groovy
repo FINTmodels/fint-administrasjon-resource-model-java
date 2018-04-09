@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import no.fint.model.administrasjon.personal.Fastlonn
 import no.fint.model.resource.administrasjon.personal.FastlonnResource
+import no.fint.model.resource.administrasjon.personal.FastlonnResources
 import spock.lang.Specification
 
 class ModelDeserializationSpec extends Specification {
@@ -158,21 +159,25 @@ class ModelDeserializationSpec extends Specification {
         result.beskjeftigelse[0].kontostreng.links.size() == 3
     }
 
-    /*
-    def "Read PersonResources from personresourceslinks.json"() {
+    def "Read FastlonnResources from fastlonnresourceslinks.json"() {
         given:
-        def input = getClass().getResourceAsStream("/personresourceslinks.json")
+        def input = getClass().getResourceAsStream("/fastlonnresourceslinks.json")
 
         when:
-        def result = objectMapper.readValue(input, FastlonnResource.class)
+        def result = objectMapper.readValue(input, FastlonnResources.class)
         println(result)
 
         then:
         result
         result.getTotalItems() == 1
         result.links.self.size() == 1
-        result._embedded._entries[0].bostedsadresse
-        result._embedded._entries[0].postadresse
+        result.content[0].anvist
+        result.content[0].periode.start
+        result.content[0].systemId.identifikatorverdi == "ABC123"
+        result.content[0].beskjeftigelse[0].beskrivelse == "Test"
+        result.content[0].beskjeftigelse[0].periode.start
+        result.content[0].links.size() == 1
+        result.content[0].beskjeftigelse[0].links.size() == 1
+        result.content[0].beskjeftigelse[0].kontostreng.links.size() == 3
     }
-    */
 }
