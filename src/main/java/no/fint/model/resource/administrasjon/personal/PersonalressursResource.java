@@ -1,4 +1,4 @@
-// Built from tag v2.6.0
+// Built from tag v2.7.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -62,5 +62,8 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     }
     public void addPersonalansvar(Link link) {
         addLink("personalansvar", link);
+    }
+    public void addSkoleressurs(Link link) {
+        addLink("skoleressurs", link);
     }
 }
