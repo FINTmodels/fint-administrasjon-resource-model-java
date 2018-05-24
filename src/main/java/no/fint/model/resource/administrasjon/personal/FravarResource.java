@@ -1,9 +1,8 @@
-// Built from tag v2.7.0
+// Built from tag v2.8.0
 
 package no.fint.model.resource.administrasjon.personal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,10 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
@@ -40,17 +38,42 @@ public class FravarResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
+
+    @JsonIgnore
+    public List<Link> getFravarsgrunn() {
+        return getLinks().getOrDefault("fravarsgrunn", Collections.emptyList()); 
+    }
     public void addFravarsgrunn(Link link) {
         addLink("fravarsgrunn", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getFravarstype() {
+        return getLinks().getOrDefault("fravarstype", Collections.emptyList()); 
     }
     public void addFravarstype(Link link) {
         addLink("fravarstype", link);
     }
+
+    @JsonIgnore
+    public List<Link> getArbeidsforhold() {
+        return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
+    }
     public void addArbeidsforhold(Link link) {
         addLink("arbeidsforhold", link);
     }
+
+    @JsonIgnore
+    public List<Link> getFortsettelse() {
+        return getLinks().getOrDefault("fortsettelse", Collections.emptyList()); 
+    }
     public void addFortsettelse(Link link) {
         addLink("fortsettelse", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getFortsetter() {
+        return getLinks().getOrDefault("fortsetter", Collections.emptyList()); 
     }
     public void addFortsetter(Link link) {
         addLink("fortsetter", link);

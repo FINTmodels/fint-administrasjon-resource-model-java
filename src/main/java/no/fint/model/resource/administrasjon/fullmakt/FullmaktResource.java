@@ -1,9 +1,8 @@
-// Built from tag v2.7.0
+// Built from tag v2.8.0
 
 package no.fint.model.resource.administrasjon.fullmakt;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,10 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
@@ -38,14 +36,34 @@ public class FullmaktResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
+
+    @JsonIgnore
+    public List<Link> getMyndighet() {
+        return getLinks().getOrDefault("myndighet", Collections.emptyList()); 
+    }
     public void addMyndighet(Link link) {
         addLink("myndighet", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getStedfortreder() {
+        return getLinks().getOrDefault("stedfortreder", Collections.emptyList()); 
     }
     public void addStedfortreder(Link link) {
         addLink("stedfortreder", link);
     }
+
+    @JsonIgnore
+    public List<Link> getFullmektig() {
+        return getLinks().getOrDefault("fullmektig", Collections.emptyList()); 
+    }
     public void addFullmektig(Link link) {
         addLink("fullmektig", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getRolle() {
+        return getLinks().getOrDefault("rolle", Collections.emptyList()); 
     }
     public void addRolle(Link link) {
         addLink("rolle", link);

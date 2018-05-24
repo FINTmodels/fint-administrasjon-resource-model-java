@@ -1,9 +1,8 @@
-// Built from tag v2.7.0
+// Built from tag v2.8.0
 
 package no.fint.model.resource.administrasjon.personal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,10 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
@@ -45,14 +43,34 @@ public class VariabellonnResource extends Lonn implements FintMainObject, FintLi
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
+
+    @JsonIgnore
+    public List<Link> getAnviser() {
+        return getLinks().getOrDefault("anviser", Collections.emptyList()); 
+    }
     public void addAnviser(Link link) {
         addLink("anviser", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getKonterer() {
+        return getLinks().getOrDefault("konterer", Collections.emptyList()); 
     }
     public void addKonterer(Link link) {
         addLink("konterer", link);
     }
+
+    @JsonIgnore
+    public List<Link> getAttestant() {
+        return getLinks().getOrDefault("attestant", Collections.emptyList()); 
+    }
     public void addAttestant(Link link) {
         addLink("attestant", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getArbeidsforhold() {
+        return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
     }
     public void addArbeidsforhold(Link link) {
         addLink("arbeidsforhold", link);

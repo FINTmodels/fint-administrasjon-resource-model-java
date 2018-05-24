@@ -1,9 +1,8 @@
-// Built from tag v2.7.0
+// Built from tag v2.8.0
 
 package no.fint.model.resource.administrasjon.organisasjon;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,10 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
@@ -42,20 +40,50 @@ public class OrganisasjonselementResource extends EnhetResource implements FintM
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
+
+    @JsonIgnore
+    public List<Link> getAnsvar() {
+        return getLinks().getOrDefault("ansvar", Collections.emptyList()); 
+    }
     public void addAnsvar(Link link) {
         addLink("ansvar", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getLeder() {
+        return getLinks().getOrDefault("leder", Collections.emptyList()); 
     }
     public void addLeder(Link link) {
         addLink("leder", link);
     }
+
+    @JsonIgnore
+    public List<Link> getOverordnet() {
+        return getLinks().getOrDefault("overordnet", Collections.emptyList()); 
+    }
     public void addOverordnet(Link link) {
         addLink("overordnet", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getUnderordnet() {
+        return getLinks().getOrDefault("underordnet", Collections.emptyList()); 
     }
     public void addUnderordnet(Link link) {
         addLink("underordnet", link);
     }
+
+    @JsonIgnore
+    public List<Link> getSkole() {
+        return getLinks().getOrDefault("skole", Collections.emptyList()); 
+    }
     public void addSkole(Link link) {
         addLink("skole", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getArbeidsforhold() {
+        return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
     }
     public void addArbeidsforhold(Link link) {
         addLink("arbeidsforhold", link);
