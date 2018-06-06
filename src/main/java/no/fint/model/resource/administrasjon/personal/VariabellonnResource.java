@@ -1,4 +1,4 @@
-// Built from tag v2.8.0
+// Built from tag v3.0.0-rc-1
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -18,31 +18,30 @@ import java.util.Map;
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
-import no.fint.model.resource.administrasjon.kompleksedatatyper.VariabelttilleggResource;
-import no.fint.model.administrasjon.personal.Lonn;
+import no.fint.model.resource.administrasjon.personal.LonnResource;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class VariabellonnResource extends Lonn implements FintMainObject, FintLinks {
+public class VariabellonnResource extends LonnResource implements FintMainObject, FintLinks {
     // Attributes
-    @JsonIgnore
-    @Override
-    public List<FintLinks> getNestedResources() {
-        List<FintLinks> result = FintLinks.super.getNestedResources();
-        if (variabelttillegg != null) {
-            result.addAll(variabelttillegg);
-        }
-        return result;
-    }
     @NonNull
-    private List<VariabelttilleggResource> variabelttillegg;
+    private Long antall;
+    private Long belop;
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
+
+    @JsonIgnore
+    public List<Link> getLonnsart() {
+        return getLinks().getOrDefault("lonnsart", Collections.emptyList()); 
+    }
+    public void addLonnsart(Link link) {
+        addLink("lonnsart", link);
+    }
 
     @JsonIgnore
     public List<Link> getAnviser() {

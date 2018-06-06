@@ -8,10 +8,10 @@ import java.util.List;
 
 import no.fint.model.resource.AbstractCollectionResources;
 
-public class VariabellonnResources extends AbstractCollectionResources<VariabellonnResource> {
+public class LonnResources extends AbstractCollectionResources<LonnResource> {
 
     @Override
-    public TypeReference<List<VariabellonnResource>> getTypeReference() {
-        return new TypeReference<List<VariabellonnResource>>() {};
+    public TypeReference<List<LonnResource>> getTypeReference() {
+        return new TypeReference<List<LonnResource>>() {};
     }
 }

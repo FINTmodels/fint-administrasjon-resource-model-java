@@ -1,4 +1,4 @@
-// Built from tag v2.8.0
+// Built from tag v3.0.0-rc-1
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -31,7 +31,6 @@ public class FravarResource implements FintMainObject, FintLinks {
     private Periode periode;
     @NonNull
     private Long prosent;
-    @NonNull
     private Identifikator systemId;
 
     // Relations

@@ -4,13 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat
 import groovy.json.JsonSlurper
-import no.fint.model.administrasjon.kompleksedatatyper.Beskjeftigelse
 import no.fint.model.administrasjon.kompleksedatatyper.Kontostreng
 import no.fint.model.administrasjon.personal.Fastlonn
 import no.fint.model.felles.kompleksedatatyper.Identifikator
 import no.fint.model.felles.kompleksedatatyper.Periode
 import no.fint.model.resource.Link
-import no.fint.model.resource.administrasjon.kompleksedatatyper.BeskjeftigelseResource
 import no.fint.model.resource.administrasjon.kompleksedatatyper.KontostrengResource
 import no.fint.model.resource.administrasjon.personal.FastlonnResource
 import spock.lang.Specification
@@ -33,8 +31,7 @@ class ModelSerializationSpec extends Specification {
                 attestert: new Date(System.currentTimeMillis()-10000),
                 anvist: new Date(),
                 periode: new Periode(start: new Date()),
-                beskjeftigelse: [ new Beskjeftigelse(prosent: 10000, beskrivelse: "Test", kontostreng: new Kontostreng()) ],
-                fasttillegg: []
+                prosent: 10000, beskrivelse: "Test", kontostreng: new Kontostreng()
         )
 
         when:
@@ -44,7 +41,7 @@ class ModelSerializationSpec extends Specification {
 
         then:
         object
-        object.beskjeftigelse[0].prosent
+        object.prosent
     }
 
     def "Serialize FastlonnResource with only own links"() {
@@ -54,7 +51,9 @@ class ModelSerializationSpec extends Specification {
                 attestert: new Date(System.currentTimeMillis()-10000),
                 anvist: new Date(),
                 periode: new Periode(start: new Date()),
-                beskjeftigelse: [ new BeskjeftigelseResource(prosent: 10000, beskrivelse: "Test", kontostreng: new KontostrengResource()) ]
+                prosent: 10000,
+                beskrivelse: "Test",
+                kontostreng: new KontostrengResource()
         )
         fastlonn.addArbeidsforhold(Link.with("/administrasjon/personal/arbeidsforhold/systemid/1234"))
 
@@ -79,11 +78,11 @@ class ModelSerializationSpec extends Specification {
                 attestert: new Date(System.currentTimeMillis()-10000),
                 anvist: new Date(),
                 periode: new Periode(start: new Date()),
-        )
-        def beskjeftigelse = new BeskjeftigelseResource(prosent: 10000, beskrivelse: "Test", kontostreng: kontostreng)
-        beskjeftigelse.addLonnsart(Link.with("/administrasjon/kodeverk/lonnsart/systemid/4"))
+                prosent: 10000,
+                beskrivelse: "Test",
+                kontostreng: kontostreng)
+        fastlonn.addLonnsart(Link.with("/administrasjon/kodeverk/lonnsart/systemid/4"))
         fastlonn.addArbeidsforhold(Link.with("/administrasjon/personal/arbeidsforhold/systemid/1234"))
-        fastlonn.setBeskjeftigelse([ beskjeftigelse ] )
 
         when:
         def result = objectMapper.writeValueAsString(fastlonn)
@@ -93,7 +92,8 @@ class ModelSerializationSpec extends Specification {
         then:
         object
         object._links.arbeidsforhold
-        object.beskjeftigelse[0].kontostreng._links.art
+        object._links.lonnsart
+        object.kontostreng._links.art
     }
 
 }

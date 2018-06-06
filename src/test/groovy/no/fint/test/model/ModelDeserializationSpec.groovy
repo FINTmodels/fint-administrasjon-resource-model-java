@@ -28,10 +28,10 @@ class ModelDeserializationSpec extends Specification {
         result.anvist
         result.periode.start
         result.systemId.identifikatorverdi == "ABC123"
-        result.beskjeftigelse[0].beskrivelse == "Test"
-        result.beskjeftigelse[0].periode.start
-        result.beskjeftigelse[0].prosent == 10000
-        result.beskjeftigelse[0].kontostreng
+        result.beskrivelse == "Test"
+        result.periode.start
+        result.prosent == 10000
+        result.kontostreng
     }
 
     def "Read FastlonnResource from fastlonn.json"() {
@@ -47,10 +47,10 @@ class ModelDeserializationSpec extends Specification {
         result.anvist
         result.periode.start
         result.systemId.identifikatorverdi == "ABC123"
-        result.beskjeftigelse[0].beskrivelse == "Test"
-        result.beskjeftigelse[0].periode.start
-        result.beskjeftigelse[0].prosent == 10000
-        result.beskjeftigelse[0].kontostreng
+        result.beskrivelse == "Test"
+        result.periode.start
+        result.prosent == 10000
+        result.kontostreng
     }
 
     def "Read Fastlonn from fastlonnresource.json"() {
@@ -79,10 +79,10 @@ class ModelDeserializationSpec extends Specification {
         result.anvist
         result.periode.start
         result.systemId.identifikatorverdi == "ABC123"
-        result.beskjeftigelse[0].beskrivelse == "Test"
-        result.beskjeftigelse[0].periode.start
-        result.beskjeftigelse[0].prosent == 10000
-        result.beskjeftigelse[0].kontostreng
+        result.beskrivelse == "Test"
+        result.periode.start
+        result.prosent == 10000
+        result.kontostreng
     }
 
     def "Read FastlonnResource from fastlonnresource.json"() {
@@ -98,10 +98,10 @@ class ModelDeserializationSpec extends Specification {
         result.anvist
         result.periode.start
         result.systemId.identifikatorverdi == "ABC123"
-        result.beskjeftigelse[0].beskrivelse == "Test"
-        result.beskjeftigelse[0].periode.start
-        result.beskjeftigelse[0].prosent == 10000
-        result.beskjeftigelse[0].kontostreng
+        result.beskrivelse == "Test"
+        result.periode.start
+        result.prosent == 10000
+        result.kontostreng
         result.links.size() == 1
     }
 
@@ -131,10 +131,10 @@ class ModelDeserializationSpec extends Specification {
         result.anvist
         result.periode.start
         result.systemId.identifikatorverdi == "ABC123"
-        result.beskjeftigelse[0].beskrivelse == "Test"
-        result.beskjeftigelse[0].periode.start
-        result.beskjeftigelse[0].prosent == 10000
-        result.beskjeftigelse[0].kontostreng
+        result.beskrivelse == "Test"
+        result.periode.start
+        result.prosent == 10000
+        result.kontostreng
     }
 
     def "Read FastlonnResource from fastlonnresourcelinks.json"() {
@@ -150,13 +150,12 @@ class ModelDeserializationSpec extends Specification {
         result.anvist
         result.periode.start
         result.systemId.identifikatorverdi == "ABC123"
-        result.beskjeftigelse[0].beskrivelse == "Test"
-        result.beskjeftigelse[0].periode.start
-        result.beskjeftigelse[0].prosent == 10000
-        result.beskjeftigelse[0].kontostreng
-        result.links.size() == 1
-        result.beskjeftigelse[0].links.size() == 1
-        result.beskjeftigelse[0].kontostreng.links.size() == 3
+        result.beskrivelse == "Test"
+        result.periode.start
+        result.prosent == 10000
+        result.kontostreng
+        result.links.size() == 2
+        result.kontostreng.links.size() == 3
     }
 
     def "Read FastlonnResources from fastlonnresourceslinks.json"() {
@@ -174,10 +173,9 @@ class ModelDeserializationSpec extends Specification {
         result.content[0].anvist
         result.content[0].periode.start
         result.content[0].systemId.identifikatorverdi == "ABC123"
-        result.content[0].beskjeftigelse[0].beskrivelse == "Test"
-        result.content[0].beskjeftigelse[0].periode.start
-        result.content[0].links.size() == 1
-        result.content[0].beskjeftigelse[0].links.size() == 1
-        result.content[0].beskjeftigelse[0].kontostreng.links.size() == 3
+        result.content[0].beskrivelse == "Test"
+        result.content[0].periode.start
+        result.content[0].links.size() == 2
+        result.content[0].kontostreng.links.size() == 3
     }
 }

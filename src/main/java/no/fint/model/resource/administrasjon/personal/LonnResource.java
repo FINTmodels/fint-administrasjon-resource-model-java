@@ -1,6 +1,6 @@
-// Built from tag v2.8.0
+// Built from tag v3.0.0-rc-1
 
-package no.fint.model.resource.administrasjon.kompleksedatatyper;
+package no.fint.model.resource.administrasjon.personal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,17 +15,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import no.fint.model.FintComplexDatatypeObject;
+import no.fint.model.FintAbstractObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
+import java.util.Date;
 import no.fint.model.resource.administrasjon.kompleksedatatyper.KontostrengResource;
 import no.fint.model.felles.kompleksedatatyper.Periode;
+import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class FasttilleggResource implements FintComplexDatatypeObject, FintLinks {
+public abstract class LonnResource implements FintAbstractObject, FintLinks {
     // Attributes
     @JsonIgnore
     @Override
@@ -36,24 +38,19 @@ public class FasttilleggResource implements FintComplexDatatypeObject, FintLinks
         }
         return result;
     }
-    @NonNull
-    private Long belop;
+    private Date anvist;
+    private Date attestert;
     @NonNull
     private String beskrivelse;
+    private Date kontert;
     @NonNull
     private KontostrengResource kontostreng;
+    private Periode opptjent;
+    @NonNull
     private Periode periode;
+    private Identifikator systemId;
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
-        
-
-    @JsonIgnore
-    public List<Link> getLonnsart() {
-        return getLinks().getOrDefault("lonnsart", Collections.emptyList()); 
-    }
-    public void addLonnsart(Link link) {
-        addLink("lonnsart", link);
-    }
 }

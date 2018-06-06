@@ -1,6 +1,6 @@
-// Built from tag v2.8.0
+// Built from tag v3.0.0-rc-1
 
-package no.fint.model.resource.administrasjon.kompleksedatatyper;
+package no.fint.model.resource.administrasjon.personal;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 

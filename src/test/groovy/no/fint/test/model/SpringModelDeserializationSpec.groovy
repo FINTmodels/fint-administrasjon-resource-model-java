@@ -17,7 +17,7 @@ class SpringModelDeserializationSpec extends Specification {
     @Autowired
     private ObjectMapper objectMapper
 
-    def "Read Resource from personresourcelinks json"() {
+    def "Read Resource from fastlonnresourcelinks.json"() {
         given:
         def input = getClass().getResourceAsStream("/fastlonnresourcelinks.json")
         
@@ -27,16 +27,15 @@ class SpringModelDeserializationSpec extends Specification {
 
         then:
         result
-        result.links.size() == 1
+        result.links.size() == 2
         result.content
         result.content.anvist
-        result.content.beskjeftigelse[0].kontostreng
+        result.content.kontostreng
         result.content.periode.start
         result.content.systemId.identifikatorverdi == "ABC123"
-        result.content.beskjeftigelse[0].beskrivelse == "Test"
-        result.content.beskjeftigelse[0].periode.start
-        result.content.beskjeftigelse[0].prosent == 10000
-        result.content.beskjeftigelse[0].kontostreng
+        result.content.beskrivelse == "Test"
+        result.content.periode.start
+        result.content.prosent == 10000
     }
 
     /*

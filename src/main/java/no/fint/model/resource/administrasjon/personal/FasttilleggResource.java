@@ -24,10 +24,10 @@ import no.fint.model.resource.administrasjon.personal.LonnResource;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class FastlonnResource extends LonnResource implements FintMainObject, FintLinks {
+public class FasttilleggResource extends LonnResource implements FintMainObject, FintLinks {
     // Attributes
     @NonNull
-    private Long prosent;
+    private Long belop;
 
     // Relations
     @Getter
