@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag feature-fordring
 
 package no.fint.model.resource.administrasjon.organisasjon;
 
@@ -71,6 +71,14 @@ public class OrganisasjonselementResource extends EnhetResource implements FintM
     }
     public void addUnderordnet(Link link) {
         addLink("underordnet", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getOppdragsgiver() {
+        return getLinks().getOrDefault("oppdragsgiver", Collections.emptyList()); 
+    }
+    public void addOppdragsgiver(Link link) {
+        addLink("oppdragsgiver", link);
     }
 
     @JsonIgnore

@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag feature-fordring
 
 package no.fint.model.resource.administrasjon.kodeverk;
 
