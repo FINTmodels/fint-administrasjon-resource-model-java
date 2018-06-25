@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.organisasjon;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import javax.validation.constraints.NotNull;
 import lombok.ToString;
 
 import java.util.Collections;
@@ -31,9 +31,9 @@ public class OrganisasjonselementResource extends EnhetResource implements FintM
     private Periode gyldighetsperiode;
     private String kortnavn;
     private String navn;
-    @NonNull
+    @NotNull
     private Identifikator organisasjonsId;
-    @NonNull
+    @NotNull
     private Identifikator organisasjonsKode;
 
     // Relations

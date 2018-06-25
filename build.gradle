@@ -23,8 +23,11 @@ repositories {
 
 apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/dependencies.gradle'
 dependencies {
-    compile("no.fint:fint-administrasjon-model-java:${version}")
-    compile("no.fint:fint-felles-resource-model-java:${version}")
+    compile("no.fint:fint-administrasjon-model-java:3.0.0")
+    compile("no.fint:fint-felles-resource-model-java:3.0.0")
+    compile('no.fint:fint-model-resource:0.3.0-rc-4')
+
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
 

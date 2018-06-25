@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import javax.validation.constraints.NotNull;
 import lombok.ToString;
 
 import java.util.Collections;
@@ -40,13 +40,13 @@ public abstract class LonnResource implements FintAbstractObject, FintLinks {
     }
     private Date anvist;
     private Date attestert;
-    @NonNull
+    @NotNull
     private String beskrivelse;
     private Date kontert;
-    @NonNull
+    @NotNull
     private KontostrengResource kontostreng;
     private Periode opptjent;
-    @NonNull
+    @NotNull
     private Periode periode;
     private Identifikator systemId;
 

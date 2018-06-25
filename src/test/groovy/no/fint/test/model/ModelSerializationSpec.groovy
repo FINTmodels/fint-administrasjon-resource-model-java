@@ -11,6 +11,7 @@ import no.fint.model.felles.kompleksedatatyper.Periode
 import no.fint.model.resource.Link
 import no.fint.model.resource.administrasjon.kompleksedatatyper.KontostrengResource
 import no.fint.model.resource.administrasjon.personal.FastlonnResource
+import no.fint.model.resource.administrasjon.personal.VariabellonnResource
 import spock.lang.Specification
 
 class ModelSerializationSpec extends Specification {
@@ -86,6 +87,35 @@ class ModelSerializationSpec extends Specification {
 
         when:
         def result = objectMapper.writeValueAsString(fastlonn)
+        println(result)
+        def object = jsonSlurper.parseText(result)
+
+        then:
+        object
+        object._links.arbeidsforhold
+        object._links.lonnsart
+        object.kontostreng._links.art
+    }
+
+    def "Serialize VariabellonnResource with deep links"() {
+        given:
+        def kontostreng = new KontostrengResource()
+        kontostreng.addArt(Link.with("/administrasjon/kodeverk/art/systemid/1"))
+        kontostreng.addAnsvar(Link.with("/administrasjon/kodeverk/ansvar/systemid/2"))
+        kontostreng.addFunksjon(Link.with("/administrasjon/kodeverk/funksjon/systemid/3"))
+        def variabellonn = new VariabellonnResource(
+                systemId: new Identifikator(identifikatorverdi: "ABC123"),
+                attestert: new Date(System.currentTimeMillis()-10000),
+                anvist: new Date(),
+                periode: new Periode(start: new Date()),
+                antall: 10000,
+                beskrivelse: "Test",
+                kontostreng: kontostreng)
+        variabellonn.addLonnsart(Link.with("/administrasjon/kodeverk/lonnsart/systemid/4"))
+        variabellonn.addArbeidsforhold(Link.with("/administrasjon/personal/arbeidsforhold/systemid/1234"))
+
+        when:
+        def result = objectMapper.writeValueAsString(variabellonn)
         println(result)
         def object = jsonSlurper.parseText(result)
 

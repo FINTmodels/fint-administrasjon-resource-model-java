@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import javax.validation.constraints.NotNull;
 import lombok.ToString;
 
 import java.util.Collections;
@@ -29,9 +29,9 @@ import no.fint.model.felles.kompleksedatatyper.Kontaktinformasjon;
 @ToString
 public class PersonalressursResource implements FintMainObject, FintLinks {
     // Attributes
-    @NonNull
+    @NotNull
     private Identifikator ansattnummer;
-    @NonNull
+    @NotNull
     private Periode ansettelsesperiode;
     private Date ansiennitet;
     private Identifikator brukernavn;
