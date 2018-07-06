@@ -41,11 +41,12 @@ public class FakturagrunnlagResource implements FintMainObject, FintLinks {
     private Date fakturadato;
     @NonNull
     private List<FakturalinjeResource> fakturalinjer;
-    @NonNull
     private Identifikator fakturanummer;
     private Date forfallsdato;
     private Date leveringsdato;
     private Long netto;
+    @NonNull
+    private Identifikator ordrenummer;
     private Long total;
 
     // Relations
