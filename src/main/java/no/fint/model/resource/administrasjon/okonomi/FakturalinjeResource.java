@@ -26,7 +26,7 @@ import no.fint.model.resource.Link;
 public class FakturalinjeResource implements FintComplexDatatypeObject, FintLinks {
     // Attributes
     @NonNull
-    private Long antall;
+    private Float antall;
     @NonNull
     private List<String> fritekst;
     @NonNull

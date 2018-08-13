@@ -38,7 +38,6 @@ public class VarelinjeResource extends Begrep implements FintMainObject, FintLin
     }
     @NonNull
     private String enhet;
-    @NonNull
     private KontostrengResource kontering;
     @NonNull
     private Long pris;

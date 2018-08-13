@@ -25,6 +25,9 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class MvakodeResource extends Begrep implements FintMainObject, FintLinks {
+    // Attributes
+    @NonNull
+    private Long promille;
 
     // Relations
     @Getter
