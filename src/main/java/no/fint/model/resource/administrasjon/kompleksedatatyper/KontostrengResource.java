@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.kompleksedatatyper;
 
@@ -29,7 +29,6 @@ public class KontostrengResource implements FintComplexDatatypeObject, FintLinks
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getAnsvar() {
         return getLinks().getOrDefault("ansvar", Collections.emptyList()); 
@@ -37,7 +36,6 @@ public class KontostrengResource implements FintComplexDatatypeObject, FintLinks
     public void addAnsvar(Link link) {
         addLink("ansvar", link);
     }
-
     @JsonIgnore
     public List<Link> getArt() {
         return getLinks().getOrDefault("art", Collections.emptyList()); 
@@ -45,7 +43,6 @@ public class KontostrengResource implements FintComplexDatatypeObject, FintLinks
     public void addArt(Link link) {
         addLink("art", link);
     }
-
     @JsonIgnore
     public List<Link> getFunksjon() {
         return getLinks().getOrDefault("funksjon", Collections.emptyList()); 
@@ -53,7 +50,6 @@ public class KontostrengResource implements FintComplexDatatypeObject, FintLinks
     public void addFunksjon(Link link) {
         addLink("funksjon", link);
     }
-
     @JsonIgnore
     public List<Link> getProsjekt() {
         return getLinks().getOrDefault("prosjekt", Collections.emptyList()); 

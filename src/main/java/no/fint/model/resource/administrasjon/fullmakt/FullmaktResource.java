@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.fullmakt;
 
@@ -36,7 +36,6 @@ public class FullmaktResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getMyndighet() {
         return getLinks().getOrDefault("myndighet", Collections.emptyList()); 
@@ -44,7 +43,6 @@ public class FullmaktResource implements FintMainObject, FintLinks {
     public void addMyndighet(Link link) {
         addLink("myndighet", link);
     }
-
     @JsonIgnore
     public List<Link> getStedfortreder() {
         return getLinks().getOrDefault("stedfortreder", Collections.emptyList()); 
@@ -52,7 +50,6 @@ public class FullmaktResource implements FintMainObject, FintLinks {
     public void addStedfortreder(Link link) {
         addLink("stedfortreder", link);
     }
-
     @JsonIgnore
     public List<Link> getFullmektig() {
         return getLinks().getOrDefault("fullmektig", Collections.emptyList()); 
@@ -60,7 +57,6 @@ public class FullmaktResource implements FintMainObject, FintLinks {
     public void addFullmektig(Link link) {
         addLink("fullmektig", link);
     }
-
     @JsonIgnore
     public List<Link> getRolle() {
         return getLinks().getOrDefault("rolle", Collections.emptyList()); 

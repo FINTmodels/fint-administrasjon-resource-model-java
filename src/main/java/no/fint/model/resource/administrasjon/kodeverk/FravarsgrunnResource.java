@@ -18,23 +18,15 @@ import java.util.Map;
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
-import no.fint.model.administrasjon.kodeverk.Kontodimensjon;
+import no.fint.model.felles.basisklasser.Begrep;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class ArtResource extends Kontodimensjon implements FintMainObject, FintLinks {
+public class FravarsgrunnResource extends Begrep implements FintMainObject, FintLinks {
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
-        
-    @JsonIgnore
-    public List<Link> getFullmakt() {
-        return getLinks().getOrDefault("fullmakt", Collections.emptyList()); 
-    }
-    public void addFullmakt(Link link) {
-        addLink("fullmakt", link);
-    }
 }

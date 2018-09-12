@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.kodeverk;
 
@@ -30,7 +30,6 @@ public class FunksjonResource extends Kontodimensjon implements FintMainObject, 
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getOverordnet() {
         return getLinks().getOrDefault("overordnet", Collections.emptyList()); 
@@ -38,7 +37,6 @@ public class FunksjonResource extends Kontodimensjon implements FintMainObject, 
     public void addOverordnet(Link link) {
         addLink("overordnet", link);
     }
-
     @JsonIgnore
     public List<Link> getUnderordnet() {
         return getLinks().getOrDefault("underordnet", Collections.emptyList()); 
@@ -46,7 +44,6 @@ public class FunksjonResource extends Kontodimensjon implements FintMainObject, 
     public void addUnderordnet(Link link) {
         addLink("underordnet", link);
     }
-
     @JsonIgnore
     public List<Link> getFullmakt() {
         return getLinks().getOrDefault("fullmakt", Collections.emptyList()); 

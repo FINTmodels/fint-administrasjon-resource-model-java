@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 import no.fint.model.resource.AbstractCollectionResources;
 
 @NoArgsConstructor
-public class ArtResources extends AbstractCollectionResources<ArtResource> {
+public class PersonalressurskategoriResources extends AbstractCollectionResources<PersonalressurskategoriResource> {
 
-    public ArtResources(Collection<ArtResource> input) {
+    public PersonalressurskategoriResources(Collection<PersonalressurskategoriResource> input) {
         super(input);
     }
 
     @JsonIgnore
     @Deprecated
     @Override
-    public TypeReference<List<ArtResource>> getTypeReference() {
-        return new TypeReference<List<ArtResource>>() {};
+    public TypeReference<List<PersonalressurskategoriResource>> getTypeReference() {
+        return new TypeReference<List<PersonalressurskategoriResource>>() {};
     }
 }

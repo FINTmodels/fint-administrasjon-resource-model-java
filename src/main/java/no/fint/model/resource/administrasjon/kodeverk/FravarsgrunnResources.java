@@ -1,6 +1,6 @@
 // Built from tag v3.0.0
 
-package no.fint.model.resource.administrasjon.personal;
+package no.fint.model.resource.administrasjon.kodeverk;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 import no.fint.model.resource.AbstractCollectionResources;
 
 @NoArgsConstructor
-public class FasttilleggResources extends AbstractCollectionResources<FasttilleggResource> {
+public class FravarsgrunnResources extends AbstractCollectionResources<FravarsgrunnResource> {
 
-    public FasttilleggResources(Collection<FasttilleggResource> input) {
+    public FravarsgrunnResources(Collection<FravarsgrunnResource> input) {
         super(input);
     }
 
     @JsonIgnore
     @Deprecated
     @Override
-    public TypeReference<List<FasttilleggResource>> getTypeReference() {
-        return new TypeReference<List<FasttilleggResource>>() {};
+    public TypeReference<List<FravarsgrunnResource>> getTypeReference() {
+        return new TypeReference<List<FravarsgrunnResource>>() {};
     }
 }

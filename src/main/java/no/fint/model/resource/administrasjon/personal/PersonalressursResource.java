@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -42,7 +42,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getPersonalressurskategori() {
         return getLinks().getOrDefault("personalressurskategori", Collections.emptyList()); 
@@ -50,7 +49,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addPersonalressurskategori(Link link) {
         addLink("personalressurskategori", link);
     }
-
     @JsonIgnore
     public List<Link> getArbeidsforhold() {
         return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
@@ -58,7 +56,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addArbeidsforhold(Link link) {
         addLink("arbeidsforhold", link);
     }
-
     @JsonIgnore
     public List<Link> getPerson() {
         return getLinks().getOrDefault("person", Collections.emptyList()); 
@@ -66,7 +63,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addPerson(Link link) {
         addLink("person", link);
     }
-
     @JsonIgnore
     public List<Link> getStedfortreder() {
         return getLinks().getOrDefault("stedfortreder", Collections.emptyList()); 
@@ -74,7 +70,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addStedfortreder(Link link) {
         addLink("stedfortreder", link);
     }
-
     @JsonIgnore
     public List<Link> getFullmakt() {
         return getLinks().getOrDefault("fullmakt", Collections.emptyList()); 
@@ -82,7 +77,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addFullmakt(Link link) {
         addLink("fullmakt", link);
     }
-
     @JsonIgnore
     public List<Link> getLeder() {
         return getLinks().getOrDefault("leder", Collections.emptyList()); 
@@ -90,7 +84,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addLeder(Link link) {
         addLink("leder", link);
     }
-
     @JsonIgnore
     public List<Link> getPersonalansvar() {
         return getLinks().getOrDefault("personalansvar", Collections.emptyList()); 
@@ -98,7 +91,6 @@ public class PersonalressursResource implements FintMainObject, FintLinks {
     public void addPersonalansvar(Link link) {
         addLink("personalansvar", link);
     }
-
     @JsonIgnore
     public List<Link> getSkoleressurs() {
         return getLinks().getOrDefault("skoleressurs", Collections.emptyList()); 

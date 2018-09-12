@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -37,7 +37,6 @@ public class FravarResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getFravarsgrunn() {
         return getLinks().getOrDefault("fravarsgrunn", Collections.emptyList()); 
@@ -45,7 +44,6 @@ public class FravarResource implements FintMainObject, FintLinks {
     public void addFravarsgrunn(Link link) {
         addLink("fravarsgrunn", link);
     }
-
     @JsonIgnore
     public List<Link> getFravarstype() {
         return getLinks().getOrDefault("fravarstype", Collections.emptyList()); 
@@ -53,7 +51,6 @@ public class FravarResource implements FintMainObject, FintLinks {
     public void addFravarstype(Link link) {
         addLink("fravarstype", link);
     }
-
     @JsonIgnore
     public List<Link> getArbeidsforhold() {
         return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
@@ -61,7 +58,6 @@ public class FravarResource implements FintMainObject, FintLinks {
     public void addArbeidsforhold(Link link) {
         addLink("arbeidsforhold", link);
     }
-
     @JsonIgnore
     public List<Link> getFortsettelse() {
         return getLinks().getOrDefault("fortsettelse", Collections.emptyList()); 
@@ -69,7 +65,6 @@ public class FravarResource implements FintMainObject, FintLinks {
     public void addFortsettelse(Link link) {
         addLink("fortsettelse", link);
     }
-
     @JsonIgnore
     public List<Link> getFortsetter() {
         return getLinks().getOrDefault("fortsetter", Collections.emptyList()); 

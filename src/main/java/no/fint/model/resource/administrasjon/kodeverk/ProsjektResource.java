@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.kodeverk;
 
@@ -30,7 +30,6 @@ public class ProsjektResource extends Kontodimensjon implements FintMainObject, 
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getFullmakt() {
         return getLinks().getOrDefault("fullmakt", Collections.emptyList()); 

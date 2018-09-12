@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -34,7 +34,6 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getLonnsart() {
         return getLinks().getOrDefault("lonnsart", Collections.emptyList()); 
@@ -42,7 +41,6 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
     public void addLonnsart(Link link) {
         addLink("lonnsart", link);
     }
-
     @JsonIgnore
     public List<Link> getAnviser() {
         return getLinks().getOrDefault("anviser", Collections.emptyList()); 
@@ -50,7 +48,6 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
     public void addAnviser(Link link) {
         addLink("anviser", link);
     }
-
     @JsonIgnore
     public List<Link> getKonterer() {
         return getLinks().getOrDefault("konterer", Collections.emptyList()); 
@@ -58,7 +55,6 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
     public void addKonterer(Link link) {
         addLink("konterer", link);
     }
-
     @JsonIgnore
     public List<Link> getAttestant() {
         return getLinks().getOrDefault("attestant", Collections.emptyList()); 
@@ -66,7 +62,6 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
     public void addAttestant(Link link) {
         addLink("attestant", link);
     }
-
     @JsonIgnore
     public List<Link> getArbeidsforhold() {
         return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 

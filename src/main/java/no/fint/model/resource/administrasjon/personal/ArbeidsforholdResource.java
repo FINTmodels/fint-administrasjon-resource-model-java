@@ -1,4 +1,4 @@
-// Built from tag v3.0.0-rc-1
+// Built from tag v3.0.0
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -49,7 +49,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getAnsvar() {
         return getLinks().getOrDefault("ansvar", Collections.emptyList()); 
@@ -57,7 +56,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addAnsvar(Link link) {
         addLink("ansvar", link);
     }
-
     @JsonIgnore
     public List<Link> getArbeidsforholdstype() {
         return getLinks().getOrDefault("arbeidsforholdstype", Collections.emptyList()); 
@@ -65,7 +63,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addArbeidsforholdstype(Link link) {
         addLink("arbeidsforholdstype", link);
     }
-
     @JsonIgnore
     public List<Link> getFunksjon() {
         return getLinks().getOrDefault("funksjon", Collections.emptyList()); 
@@ -73,7 +70,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addFunksjon(Link link) {
         addLink("funksjon", link);
     }
-
     @JsonIgnore
     public List<Link> getStillingskode() {
         return getLinks().getOrDefault("stillingskode", Collections.emptyList()); 
@@ -81,7 +77,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addStillingskode(Link link) {
         addLink("stillingskode", link);
     }
-
     @JsonIgnore
     public List<Link> getTimerPerUke() {
         return getLinks().getOrDefault("timerPerUke", Collections.emptyList()); 
@@ -89,7 +84,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addTimerPerUke(Link link) {
         addLink("timerPerUke", link);
     }
-
     @JsonIgnore
     public List<Link> getArbeidssted() {
         return getLinks().getOrDefault("arbeidssted", Collections.emptyList()); 
@@ -97,7 +91,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addArbeidssted(Link link) {
         addLink("arbeidssted", link);
     }
-
     @JsonIgnore
     public List<Link> getPersonalleder() {
         return getLinks().getOrDefault("personalleder", Collections.emptyList()); 
@@ -105,7 +98,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addPersonalleder(Link link) {
         addLink("personalleder", link);
     }
-
     @JsonIgnore
     public List<Link> getFravar() {
         return getLinks().getOrDefault("fravar", Collections.emptyList()); 
@@ -113,7 +105,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addFravar(Link link) {
         addLink("fravar", link);
     }
-
     @JsonIgnore
     public List<Link> getLonn() {
         return getLinks().getOrDefault("lonn", Collections.emptyList()); 
@@ -121,7 +112,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addLonn(Link link) {
         addLink("lonn", link);
     }
-
     @JsonIgnore
     public List<Link> getPersonalressurs() {
         return getLinks().getOrDefault("personalressurs", Collections.emptyList()); 
@@ -129,7 +119,6 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
     public void addPersonalressurs(Link link) {
         addLink("personalressurs", link);
     }
-
     @JsonIgnore
     public List<Link> getUndervisningsforhold() {
         return getLinks().getOrDefault("undervisningsforhold", Collections.emptyList()); 
