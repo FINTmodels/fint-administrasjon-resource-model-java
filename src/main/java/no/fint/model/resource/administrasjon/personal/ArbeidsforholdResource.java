@@ -1,4 +1,4 @@
-// Built from tag v3.1.0
+// Built from tag v3.2.0-rc-1
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -64,6 +64,13 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
         addLink("arbeidsforholdstype", link);
     }
     @JsonIgnore
+    public List<Link> getArt() {
+        return getLinks().getOrDefault("art", Collections.emptyList()); 
+    }
+    public void addArt(Link link) {
+        addLink("art", link);
+    }
+    @JsonIgnore
     public List<Link> getFunksjon() {
         return getLinks().getOrDefault("funksjon", Collections.emptyList()); 
     }
@@ -99,18 +106,41 @@ public class ArbeidsforholdResource implements FintMainObject, FintLinks {
         addLink("personalleder", link);
     }
     @JsonIgnore
+    public List<Link> getFastlonn() {
+        return getLinks().getOrDefault("fastlonn", Collections.emptyList()); 
+    }
+    public void addFastlonn(Link link) {
+        addLink("fastlonn", link);
+    }
+    @JsonIgnore
+    public List<Link> getFasttillegg() {
+        return getLinks().getOrDefault("fasttillegg", Collections.emptyList()); 
+    }
+    public void addFasttillegg(Link link) {
+        addLink("fasttillegg", link);
+    }
+    @JsonIgnore
     public List<Link> getFravar() {
         return getLinks().getOrDefault("fravar", Collections.emptyList()); 
     }
     public void addFravar(Link link) {
         addLink("fravar", link);
     }
+    @Deprecated
     @JsonIgnore
     public List<Link> getLonn() {
         return getLinks().getOrDefault("lonn", Collections.emptyList()); 
     }
+    @Deprecated
     public void addLonn(Link link) {
         addLink("lonn", link);
+    }
+    @JsonIgnore
+    public List<Link> getVariabellonn() {
+        return getLinks().getOrDefault("variabellonn", Collections.emptyList()); 
+    }
+    public void addVariabellonn(Link link) {
+        addLink("variabellonn", link);
     }
     @JsonIgnore
     public List<Link> getPersonalressurs() {

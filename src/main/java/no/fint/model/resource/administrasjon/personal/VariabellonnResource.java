@@ -1,4 +1,4 @@
-// Built from tag v3.1.0
+// Built from tag v3.2.0-rc-1
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -42,6 +42,13 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
         addLink("lonnsart", link);
     }
     @JsonIgnore
+    public List<Link> getArbeidsforhold() {
+        return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
+    }
+    public void addArbeidsforhold(Link link) {
+        addLink("arbeidsforhold", link);
+    }
+    @JsonIgnore
     public List<Link> getAnviser() {
         return getLinks().getOrDefault("anviser", Collections.emptyList()); 
     }
@@ -61,12 +68,5 @@ public class VariabellonnResource extends LonnResource implements FintMainObject
     }
     public void addAttestant(Link link) {
         addLink("attestant", link);
-    }
-    @JsonIgnore
-    public List<Link> getArbeidsforhold() {
-        return getLinks().getOrDefault("arbeidsforhold", Collections.emptyList()); 
-    }
-    public void addArbeidsforhold(Link link) {
-        addLink("arbeidsforhold", link);
     }
 }

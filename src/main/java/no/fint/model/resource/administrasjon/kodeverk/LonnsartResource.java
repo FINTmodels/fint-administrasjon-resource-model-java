@@ -1,4 +1,4 @@
-// Built from tag v3.1.0
+// Built from tag v3.2.0-rc-1
 
 package no.fint.model.resource.administrasjon.kodeverk;
 
@@ -31,4 +31,12 @@ public class LonnsartResource extends Begrep implements FintMainObject, FintLink
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
+        
+    @JsonIgnore
+    public List<Link> getArt() {
+        return getLinks().getOrDefault("art", Collections.emptyList()); 
+    }
+    public void addArt(Link link) {
+        addLink("art", link);
+    }
 }

@@ -1,4 +1,4 @@
-// Built from tag v3.1.0
+// Built from tag v3.2.0-rc-1
 
 package no.fint.model.resource.administrasjon.kodeverk;
 
@@ -31,4 +31,12 @@ public class FravarstypeResource extends Begrep implements FintMainObject, FintL
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
+        
+    @JsonIgnore
+    public List<Link> getLonnsart() {
+        return getLinks().getOrDefault("lonnsart", Collections.emptyList()); 
+    }
+    public void addLonnsart(Link link) {
+        addLink("lonnsart", link);
+    }
 }
