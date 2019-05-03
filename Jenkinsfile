@@ -8,8 +8,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                retry(3) {
-                    sh 'gradle --no-daemon clean build'
+                timeout(10) {
+                    waitUntil {
+                        script {
+                            def r = sh returnStatus: true, script: 'gradle --no-daemon clean build'
+                            return r == 0
+                        }
+                    }
                 }
                 stash includes: 'build/libs/*.jar', name: 'libs'
             }
