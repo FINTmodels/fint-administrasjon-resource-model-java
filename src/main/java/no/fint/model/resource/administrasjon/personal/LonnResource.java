@@ -1,4 +1,4 @@
-// Built from tag v3.2.0
+// Built from tag v3.3.0-rc-1
 
 package no.fint.model.resource.administrasjon.personal;
 
@@ -19,9 +19,9 @@ import no.fint.model.FintAbstractObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
 import java.util.Date;
+import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.resource.administrasjon.kompleksedatatyper.KontostrengResource;
 import no.fint.model.felles.kompleksedatatyper.Periode;
-import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
 @Data
 @NoArgsConstructor
@@ -42,6 +42,7 @@ public abstract class LonnResource implements FintAbstractObject, FintLinks {
     private Date attestert;
     @NonNull
     private String beskrivelse;
+    private Identifikator kildesystemId;
     private Date kontert;
     @NonNull
     private KontostrengResource kontostreng;
