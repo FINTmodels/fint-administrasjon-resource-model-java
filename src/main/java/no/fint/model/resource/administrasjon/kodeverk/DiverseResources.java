@@ -1,6 +1,6 @@
 // Built from tag v3.4.0-rc-1
 
-package no.fint.model.resource.administrasjon.personal;
+package no.fint.model.resource.administrasjon.kodeverk;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 import no.fint.model.resource.AbstractCollectionResources;
 
 @NoArgsConstructor
-public class VariabellonnResources extends AbstractCollectionResources<VariabellonnResource> {
+public class DiverseResources extends AbstractCollectionResources<DiverseResource> {
 
-    public VariabellonnResources(Collection<VariabellonnResource> input) {
+    public DiverseResources(Collection<DiverseResource> input) {
         super(input);
     }
 
     @JsonIgnore
     @Deprecated
     @Override
-    public TypeReference<List<VariabellonnResource>> getTypeReference() {
-        return new TypeReference<List<VariabellonnResource>>() {};
+    public TypeReference<List<DiverseResource>> getTypeReference() {
+        return new TypeReference<List<DiverseResource>>() {};
     }
 }

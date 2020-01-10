@@ -24,33 +24,12 @@ import no.fint.model.administrasjon.kodeverk.Kontodimensjon;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class AnsvarResource extends Kontodimensjon implements FintMainObject, FintLinks {
+public class DiverseResource extends Kontodimensjon implements FintMainObject, FintLinks {
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-    @JsonIgnore
-    public List<Link> getOverordnet() {
-        return getLinks().getOrDefault("overordnet", Collections.emptyList()); 
-    }
-    public void addOverordnet(Link link) {
-        addLink("overordnet", link);
-    }
-    @JsonIgnore
-    public List<Link> getUnderordnet() {
-        return getLinks().getOrDefault("underordnet", Collections.emptyList()); 
-    }
-    public void addUnderordnet(Link link) {
-        addLink("underordnet", link);
-    }
-    @JsonIgnore
-    public List<Link> getOrganisasjonselement() {
-        return getLinks().getOrDefault("organisasjonselement", Collections.emptyList()); 
-    }
-    public void addOrganisasjonselement(Link link) {
-        addLink("organisasjonselement", link);
-    }
     @JsonIgnore
     public List<Link> getFullmakt() {
         return getLinks().getOrDefault("fullmakt", Collections.emptyList()); 
